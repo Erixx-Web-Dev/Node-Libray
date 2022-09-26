@@ -1,5 +1,6 @@
 const {Router} = require('express');
-const { RegisterBookBorrowed, LoansList, LoansFindId, UpdateLoanDueDate, SendEmailNotifLoanReturn, LoansListUser, LoanDashBoardDatas } = require('../controller/LoanCOntroller');
+const { RegisterBookBorrowed, LoansList, LoansFindId, UpdateLoanDueDate, 
+    SendEmailNotifLoanReturn, LoansListUser, LoanDashBoardDatas } = require('../controller/LoanController');
 const { bookBorrowedValidate } = require('../helper/Validation');
 const { handleErrors } = require('../helper/Validator-Error');
 
