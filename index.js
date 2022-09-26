@@ -68,8 +68,8 @@ app.use(errorHandler);
 const runApplication = async () => {
     try {
         await connectDb();
-        app.listen(process.env.port);
-        console.log('App Running at PORT:', process.env.port);
+        app.listen(process.env.PORT);
+        console.log('App Running at PORT:', process.env.PORT);
     } catch (error) {
         console.log(error?.message);
         console.log(error?.codeName);
