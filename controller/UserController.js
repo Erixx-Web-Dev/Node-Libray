@@ -160,8 +160,6 @@ const LoginUser = async (req, res) => {
         const refreshtoken = generateRefreshToken(user.email);
         user.password = undefined;
          
-        console.log(token, 'token');
-        console.log(refreshtoken, 'refreshtoken');
         // let date = new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles'});
         let date = new Date();
         return  res.status(200)
@@ -181,7 +179,7 @@ const LoginUser = async (req, res) => {
                     path: '/',
                     sameSite: 'lax'
                 })
-                .json({message: 'Sign In Success.', user, token, refreshtoken});
+                .json({message: 'Sign In Success.', user});
 
     } catch (error) {
         return res.status(500).json({message: 'Sign In Failed. Server Error.', error_details:{...error}});
