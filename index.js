@@ -39,11 +39,12 @@ app.use(express.urlencoded({extended:false}));
 const whitelist = ["https://library-system-react-gecrlfl42-gitlab-account-ericson.vercel.app"]
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      return callback(null, true)
-    } else {
+    if(!origin) return callback(null, true);
+
+    if (whitelist.indexOf(origin) === -1) {
       return callback(new Error("Not allowed by CORS"), false)
-    }
+    } 
+    return callback(null, true)
   },
   // origin: whitelist,
   credentials: true,
