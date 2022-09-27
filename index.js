@@ -38,14 +38,14 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.json())
 const whitelist = ["https://library-system-react-gecrlfl42-gitlab-account-ericson.vercel.app"]
 const corsOptions = {
-  // origin: function (origin, callback) {
-  //   if (!origin || whitelist.indexOf(origin) !== -1) {
-  //     callback(null, true)
-  //   } else {
-  //     callback(new Error("Not allowed by CORS"))
-  //   }
-  // },
-  origin: whitelist,
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      return callback(null, true)
+    } else {
+      return callback(new Error("Not allowed by CORS"), false)
+    }
+  },
+  // origin: whitelist,
   credentials: true,
 }
 app.use(cors(corsOptions));
