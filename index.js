@@ -40,8 +40,9 @@ const whitelist = ["https://library-system-react-gecrlfl42-gitlab-account-ericso
 const corsOptions = {
   origin: function (origin, callback) {
     if(!origin) return callback(null, true);
-
+    console.log(origin);
     if (whitelist.indexOf(origin) === -1) {
+      console.log(whitelist.indexOf(origin) === -1)
       return callback(new Error("Not allowed by CORS"), false)
     } 
     return callback(null, true)
