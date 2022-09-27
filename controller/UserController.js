@@ -168,7 +168,7 @@ const LoginUser = async (req, res) => {
                     maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
                     secure: process.env.NODE_ENV !== "development",
                     httpOnly: true,
-                    path: '/',
+                    // path: '/',
                     sameSite: 'none' 
                 })
                 .cookie('refresh_token', refreshtoken, {
@@ -176,7 +176,7 @@ const LoginUser = async (req, res) => {
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
                     secure: process.env.NODE_ENV !== "development",
                     httpOnly: true,
-                    path: '/',
+                    // path: '/',
                     sameSite: 'none'
                 })
                 .json({message: 'Sign In Success.', user});
