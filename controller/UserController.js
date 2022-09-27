@@ -160,6 +160,8 @@ const LoginUser = async (req, res) => {
         const refreshtoken = generateRefreshToken(user.email);
         user.password = undefined;
          
+        console.log(token, 'token');
+        console.log(refreshtoken, 'refreshtoken');
         // let date = new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles'});
         let date = new Date();
         return  res.status(200)
