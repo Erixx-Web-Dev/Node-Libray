@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.urlencoded({ extended: false }))
 // // parse application/json
 // app.use(bodyParser.json())
-const whitelist = ["https://library-system-react.vercel.app"]
+const whitelist = ["https://library-system-react.vercel.app"];
 const corsOptions = {
   // origin: function (origin, callback) {
   //   if(!origin) return callback(null, true);
@@ -47,9 +47,13 @@ const corsOptions = {
   //   } 
   //   return callback(null, true)
   // },
-  origin: whitelist,
+  origin: "https://library-system-react-7sq3fmd8a-gitlab-account-ericson.vercel.app/",
   credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+
+
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
