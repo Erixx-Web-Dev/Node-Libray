@@ -4,7 +4,7 @@ const errorHandler = (error, req, res, next) => {
     console.log(error, req, res);
     return res.json({
         message: error.message,
-        stack: process.env.NODE_ENV == "production" ? null : error.stack
+        // stack: process.env.NODE_ENV == "production" ? null : error.stack
     });
 }
 

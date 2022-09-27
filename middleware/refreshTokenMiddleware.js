@@ -8,8 +8,8 @@ const refreshAthorization = async (req, res) => {
         const {refresh_token} = req.cookies;
     
         if(!refresh_token) {
-            res.status(401)
-                throw new Error(`You are unanthenticated 1.`)
+            return res.status(401).json({message:`You are unanthenticated 1.`});
+                // throw new Error(`You are unanthenticated 1.`)
         }
 
         const publickey = fs.readFileSync('./config/refreshtoken/public.pem', { encoding: "utf8" } );
@@ -17,15 +17,17 @@ const refreshAthorization = async (req, res) => {
         let {email} = jwt.verify(refresh_token, publickey);
 
         if(!email) {
-            res.status(401)
-                throw new Error(`Token Invalid Cannot to Issue New.`);
+            return res.status(401).json({message:`Token Invalid Cannot to Issue New.`});
+            // res.status(401)
+            //     throw new Error(`Token Invalid Cannot to Issue New.`);
         }
 
         let user = await User.findOne({email: email}).select('-password');
 
         if(!user) {
-            res.status(401)
-                throw new Error(`Token Invalid Cannot to Issue New.`);
+            return res.status(401).json({message:`Token Invalid Cannot to Issue New.`});
+            // res.status(401)
+            //     throw new Error(`Token Invalid Cannot to Issue New.`);
         }
 
         const token = generateToken(email);
@@ -42,9 +44,9 @@ const refreshAthorization = async (req, res) => {
         return res.json({message: 'Token Refresh Success.'});
 
     } catch (error) {
-        console.log(error)
-        res.status(401)
-            throw new Error(`You are unanthenticated 2.`)
+        return res.status(401).json({message:`You are unanthenticated 2.`});
+        // res.status(401)
+        //     throw new Error(`You are unanthenticated 2.`)
     }
 }
 
