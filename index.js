@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.urlencoded({ extended: false }))
 // // parse application/json
 // app.use(bodyParser.json())
-const whitelist = ["https://library-system-react-gecrlfl42-gitlab-account-ericson.vercel.app"]
+const whitelist = ["https://library-system-react-7sq3fmd8a-gitlab-account-ericson.vercel.app"]
 const corsOptions = {
   // origin: function (origin, callback) {
   //   if(!origin) return callback(null, true);
