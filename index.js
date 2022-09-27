@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.urlencoded({ extended: false }))
 // // parse application/json
 // app.use(bodyParser.json())
-const whitelist = ["http://localhost:3000"]
+const whitelist = ["https://library-system-react.vercel.app/"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {

@@ -1,6 +1,6 @@
 const imageValidate = (req, res, next) => {
 
-    console.log(req.file);
+    // console.log(req.file);
     next();
 }
 
