@@ -181,7 +181,7 @@ const LoginUser = async (req, res) => {
                     path: '/',
                     sameSite: 'lax'
                 })
-                .json({message: 'Sign In Success.', user});
+                .json({message: 'Sign In Success.', user, token, refreshtoken});
 
     } catch (error) {
         return res.status(500).json({message: 'Sign In Failed. Server Error.', error_details:{...error}});
