@@ -52,7 +52,7 @@ const checkEmailResetPass = async(req, res) => {
             let tokenvalue = generateTokenResetPass(20);
             // push token value  }
             let response = await UserClass.createToken(userResponse._id, tokenvalue);
-            let link = `http://localhost:3000/reset-password/${response.email}/${tokenvalue}`
+            let link = `https://library-system-react.vercel.app/reset-password/${response.email}/${tokenvalue}`
             let senEmail = await sendEmailResetLink(response.email, 'librarysystem@gmail.com', "Password Reset Link", response, link);
 
             return res.status(200).json({message: 'Request Success. Link was send in your email.'});

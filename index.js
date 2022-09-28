@@ -58,10 +58,8 @@ const corsAsync = function (req, callback) {
     callback(null, { ...corsOptions, credentials: true, optionsSuccessStatus: 200});
 }
 
-
 app.use(cors(corsAsync));
 app.use(cookieParser());
-
 
 app.use('/api/library-system/backend', require('./routes/auth'));
 app.use('/api/library-system/backend/admin', require('./routes/user'));
