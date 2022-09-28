@@ -37,7 +37,7 @@ app.use(express.urlencoded({extended:false}));
 // // parse application/json
 // app.use(bodyParser.json())
 const whitelist = ["https://library-system-react.vercel.app"];
-const corsOptions = {
+// const corsOptions = {
     // origin: function (origin, callback) {
     //     if (!origin || whitelist.indexOf(origin) !== -1) {
     //         callback(null, true)
@@ -45,13 +45,21 @@ const corsOptions = {
     //         callback(new Error("The domain was not allowed by CORS"), false)
     //     }
     // },
-    origin: true,
-    credentials: true,
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke
+   // origin: true,
+//     credentials: true,
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke
+// }
+const corsAsync = function (req, callback) {
+    let corsOptions = { origin: false };
+    const origin = req.header('Origin');
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+        corsOptions = { origin: true };
+    }
+    callback(null, { ...corsOptions, credentials: true, optionsSuccessStatus: 200});
 }
 
 
-app.use(cors(corsOptions));
+app.use(cors(corsAsync));
 app.use(cookieParser());
 
 
