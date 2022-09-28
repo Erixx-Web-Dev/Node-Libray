@@ -168,16 +168,18 @@ const LoginUser = async (req, res) => {
                     maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
                     secure: process.env.NODE_ENV !== "development",
                     httpOnly: true,
-                    path: '/',
-                    sameSite: 'lax' 
+                    // path: '/',
+                    sameSite: 'None'
+                    // sameSite: 'lax' 
                 })
                 .cookie('refresh_token', refreshtoken, {
                     // maxAge: '1d', // 1d automatic in browser delete when expired -> 3hrs
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
                     secure: process.env.NODE_ENV !== "development",
                     httpOnly: true,
-                    path: '/',
-                    sameSite: 'lax'
+                    // path: '/',
+                    sameSite: 'None'
+                    // sameSite: 'lax'
                 })
                 .json({message: 'Sign In Success.', user});
 

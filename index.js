@@ -36,22 +36,18 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.urlencoded({ extended: false }))
 // // parse application/json
 // app.use(bodyParser.json())
-const whitelist = ["https://library-system-react-7sq3fmd8a-gitlab-account-ericson.vercel.app"];
+const whitelist = ["https://library-system-react.vercel.app"];
 const corsOptions = {
-  // origin: function (origin, callback) {
-  //   if(!origin) return callback(null, true);
-  //   console.log(origin);
-  //   if (whitelist.indexOf(origin) === -1) {
-  //     console.log(whitelist.indexOf(origin) === -1)
-  //     return callback(new Error("Not allowed by CORS"), false)
-  //   } 
-  //   return callback(null, true)
-  // },
-  origin: "https://library-system-react-7sq3fmd8a-gitlab-account-ericson.vercel.app",
-  credentials: true,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: function (origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error("The domain was not allowed by CORS"), false)
+        }
+    },
+    credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke
 }
-
 
 
 app.use(cors(corsOptions));
