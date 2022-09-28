@@ -38,13 +38,14 @@ app.use(express.urlencoded({extended:false}));
 // app.use(bodyParser.json())
 const whitelist = ["https://library-system-react.vercel.app"];
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error("The domain was not allowed by CORS"), false)
-        }
-    },
+    // origin: function (origin, callback) {
+    //     if (!origin || whitelist.indexOf(origin) !== -1) {
+    //         callback(null, true)
+    //     } else {
+    //         callback(new Error("The domain was not allowed by CORS"), false)
+    //     }
+    // },
+    origin: true,
     credentials: true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke
 }
